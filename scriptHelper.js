@@ -11,27 +11,27 @@ function validateInput(testInput) {
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   document.getElementById(
     "pilotStatus"
-  ).innerText = `Pilot ${pilot} is ready for launch`;
+  ).textContent = `Pilot ${pilot} is ready for launch`;
   document.getElementById(
     "copilotStatus"
-  ).innerText = `Co-pilot ${copilot} is ready for launch`;
+  ).textContent = `Co-pilot ${copilot} is ready for launch`;
 
   let fuelReady = Number(fuelLevel) >= 10000;
   let cargoReady = Number(cargoLevel) <= 10000;
 
-  document.getElementById("fuelStatus").innerText = fuelReady
+  document.getElementById("fuelStatus").textContent = fuelReady
     ? "Fuel level high enough for launch"
     : "Fuel level too low for launch";
-  document.getElementById("cargoStatus").innerText = cargoReady
+  document.getElementById("cargoStatus").textContent = cargoReady
     ? "Cargo mass low enough for launch"
-    : "Cargo mass too high for launch";
+    : "Cargo mass too heavy for launch";
 
   if (fuelReady && cargoReady) {
-    document.getElementById("launchStatus").innerText =
+    document.getElementById("launchStatus").textContent =
       "Shuttle is Ready for Launch";
     document.getElementById("launchStatus").style.color = "green";
   } else {
-    document.getElementById("launchStatus").innerText =
+    document.getElementById("launchStatus").textContent =
       "Shuttle Not Ready for Launch";
     document.getElementById("launchStatus").style.color = "red";
   }
@@ -49,16 +49,16 @@ function addDestinationInfo(
   imageUrl
 ) {
   document.getElementById("missionTarget").innerHTML = `
-    <h2>Mission Destination</h2>
-    <ol>
-        <li>Name: ${name}</li>
-        <li>Diameter: ${diameter}</li>
-        <li>Star: ${star}</li>
-        <li>Distance from Earth: ${distance}</li>
-        <li>Number of Moons: ${moons}</li>
-    </ol>
-    <img src="${imageUrl}" alt="Image of ${name}">
-  `;
+        <h2>Mission Destination</h2>
+        <ol>
+            <li>Name: ${name}</li>
+            <li>Diameter: ${diameter}</li>
+            <li>Star: ${star}</li>
+            <li>Distance from Earth: ${distance}</li>
+            <li>Number of Moons: ${moons}</li>
+        </ol>
+        <img src="${imageUrl}">
+    `;
 }
 
 async function myFetch() {
