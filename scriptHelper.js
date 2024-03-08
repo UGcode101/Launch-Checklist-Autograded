@@ -9,12 +9,33 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  document.getElementById(
-    "pilotStatus"
-  ).textContent = `Pilot ${pilot} is ready for launch`;
-  document.getElementById(
-    "copilotStatus"
-  ).textContent = `Co-pilot ${copilot} is ready for launch`;
+  if (pilot.trim() === "" || !isNaN(pilot)) {
+    document.getElementById("pilotStatus").textContent =
+      "Pilot Name is Required and must be a string";
+    document.getElementById("launchStatus").textContent =
+      "Shuttle Not Ready for Launch";
+    document.getElementById("launchStatus").style.color = "red";
+    document.getElementById("faultyItems").style.visibility = "visible";
+    return;
+  } else {
+    document.getElementById(
+      "pilotStatus"
+    ).textContent = `Pilot ${pilot} is ready for launch`;
+  }
+
+  if (copilot.trim() === "" || !isNaN(copilot)) {
+    document.getElementById("copilotStatus").textContent =
+      "Co-pilot Name is Required and must be a string";
+    document.getElementById("launchStatus").textContent =
+      "Shuttle Not Ready for Launch";
+    document.getElementById("launchStatus").style.color = "red";
+    document.getElementById("faultyItems").style.visibility = "visible";
+    return;
+  } else {
+    document.getElementById(
+      "copilotStatus"
+    ).textContent = `Co-pilot ${copilot} is ready for launch`;
+  }
 
   let fuelReady = Number(fuelLevel) >= 10000;
   let cargoReady = Number(cargoLevel) <= 10000;
